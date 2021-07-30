@@ -1,0 +1,89 @@
+<style>
+    p.header {
+        font-weight: bold;
+    }
+
+    p.less {
+        font-weight: 600;
+    }
+</style>
+<div class="container">
+
+    {{!-- VENDORNAME HEAD --}}
+    <div class="row">
+        <div class="col">
+            <h1>{{detailedOrder.vendorName}}</h1>
+        </div>
+    </div>
+
+    <div class="order-details">
+        <div class="row">
+            <div class="col">
+                <p class="header">                
+                    Order # {{detailedOrder.orderID}} <br>
+                    <p id="timeOrdered">
+                        {{detailedOrder.timeOrdered}}
+                    </p>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>
+                    Discounted in: 
+                </p>
+                <div id= "discountTimer"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <hr>
+    {{#each detailedOrder.orderList}}
+    <div class="row align-items-center">
+        <div class="col">
+            <a href="/customer/menu/{{this.snackID}}">
+                <!-- <img src="{{this.image}}" style="height: 120px; width: 162px"> !-->
+                <img src="{{this.image}}" class="img-thumbnail">
+            </a>
+        </div>
+        <div class="col" align="center">
+            <a href="/customer/menu/{{this.snackID}}">{{this.name}}</a> x{{this.quantity}} : ${{this.price}}
+        </div>
+    </div>
+    <hr>
+    {{/each}}
+
+    <!-- Details of order-->
+    <br><br>
+    <div class="row">
+        <div class="col">
+            <p class="less">Time left to cancel/edit order:</p>
+            <div id="timer"></div>
+            <!-- Edit or cancel order-->
+            <input type="submit" onclick="editOrder()" class="btn btn-primary" value="Edit Order" id="edit-order">
+            <input type="submit" onclick="cancelOrder()" class="btn btn-primary" value="Cancel Order" id="cancel-order">
+        </div>
+        <div class="col" align="center">
+            <p>
+                Subtotal:&nbsp;&nbsp;${{detailedOrder.subtotal}}
+            </p>
+            <p>
+                Discount:&nbsp;&nbsp;${{discount}}
+            </p>
+            <p>
+                Total:&nbsp;&nbsp;${{detailedOrder.total}}
+            </p>
+        </div>
+    </div>
+
+   
+    
+    <br><br>
+    <a href="/customer/menu" class="btn btn-primary" id="order-back">Back</a>
+    <br><br>
+
+    <script src="/js/countdown.js"></script>
+    <script src="/js/countdownDiscount.js"></script>
+    <script src="/js/orders.js"></script>

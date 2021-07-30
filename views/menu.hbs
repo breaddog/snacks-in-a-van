@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {{#if vendorSelected}}
+            <h1>{{vendor.vanName}}'s Menu</h1>
+            {{else}}
+            <center>
+            <h1>Looks like you havent selected a vendor yet</h1> 
+            <h3>You can go to the home page and select one or<br>
+                <a href="/customer/home">click here to be rerouted</br>
+                </a>
+            </h3>
+            </center>
+            {{/if}}
+            {{#if error_msg}}
+                <div class="alert alert-danger text-center">{{error_msg}}</div>
+            {{/if}}
+        </div>
+    </div>
+
+    <br><br>
+    {{#each menu}}
+    <div class="row">
+        <div class="col">
+            <a href="/customer/menu/{{this.snackID}}">
+                <img class="rounded img-thumbnail border-dark" src="{{this.image}}" width="100%">
+            </a>
+        </div>
+        <div class="col align-items-center d-flex">
+            <a href="/customer/menu/{{this.snackID}}"> {{this.name}} </a>
+        </div>
+        <div class="col align-items-center d-flex ">
+            ${{this.price}}
+        </div>
+    </div>
+    <br><br>
+    {{/each}}
+</div>

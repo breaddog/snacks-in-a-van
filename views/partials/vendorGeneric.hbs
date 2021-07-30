@@ -1,0 +1,38 @@
+    <form>
+        <div id ="placeholder" class=" col-8">
+            <div class="form-group" id="locationTemp">
+                <label for="currentLocation">Current Location<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="currentLocation"
+                    placeholder="Your current location!">
+            </div>
+            <div class="form-group">
+                <input id="primaryButton" type="button" value="SEND MY LOCATION" class="btn btn-info btn-block" onclick="getGeolocation(); return false">
+            </div>
+            
+        </div>
+    </form>
+
+    <center style="padding-top: 20px">
+        <div id ="errorFlash" style="display: {{#if error_msg}}inline-block{{else}}none{{/if}}; 
+                text-align: center;" class="alert-danger alert">
+            {{#if error_msg}}
+            {{error_msg}}
+            {{/if}}
+        </div>
+    </center>
+
+    <div class="row justify-content-center">
+        <div class="col-1 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" id="octicon-green-dot">
+                <path d="M12 18a6 6 0 100-12 6 6 0 000 12z"></path>
+            </svg>
+        </div>
+        <div class="col-1 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" id="octicon-muted-dot">
+                <path d="M12 18a6 6 0 100-12 6 6 0 000 12z"></path>
+            </svg>
+        </div>
+        
+    </div>
+
+  

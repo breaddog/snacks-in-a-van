@@ -1,0 +1,24 @@
+<h1 tag="error" style="padding-top: 20px;">Looks like something bad happened</h1>
+
+
+<center style="padding-top: 20px">
+    
+    <h3 id="issue">
+        {{#if issue}}
+            {{issue}}
+        {{else}}
+            It appears whatever you tried to do did not resonate well with the site...
+        {{/if}}
+    </h3>
+    <h3 name="error">
+    <br>
+    {{#if redirectLink}}
+    <a href="{{redirectLink}}"><b>{{{solution}}}</b></a>
+    {{else}}
+    <a href="/customer/menu">Please click here to return to the menu page.</a>
+    {{/if}}
+    </br>
+    </h3>
+
+</center>
+

@@ -1,0 +1,580 @@
+/* central area to control type and colour */
+:root {
+    --text-big: 26px;
+    --text-medium: 18px;
+    --text-small: 12px;
+    --text-color-light: #96aabb;
+    --font-body: 'Montserrat', sans-serif;
+    --font-heading: 'Montserrat';
+    --color-dark: #000;
+    --color-medium: #5AB415;
+    --color-light: #1f2022;
+    --color-grey: #222426;
+    --color-main-green: #5AB415;
+    --color-dark-green: rgb(71, 143, 16);
+    background-color: #1f2022;
+
+}
+
+/* elements that are on every page */
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-medium);
+    background-color: var(--color-light);
+    color: var(--text-color-light);
+}
+
+header,
+footer {
+    color: var(--color-light);
+    background-color: var(--color-medium);
+    text-align: center;
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+header {
+    /* "sticky header" which stays at the top of the screen */
+    position: sticky;
+    top: 0;
+}
+
+
+input#email.form-control,
+input#password.form-control,
+input#firstName.form-control,
+input#lastName.form-control,
+input#cpassword.form-control,
+input#old_password.form-control,
+input#new_password.form-control,
+input#currentLocation.form-control,
+input#vanName.form-control
+
+{
+    color: #fff;
+}
+
+#currentLocation {
+    color: #fff;
+}
+
+.form-control:valid {
+    background-color: #1f2022 !important;
+}
+
+a {
+    text-decoration: none;
+    /* switch off underlining of anchors */
+    color: var(--text-color-light);
+}
+
+header h1 a {
+    color: var(--text-color);
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+
+/* extra stuff  for dark mode */
+.img-thumbnail {
+    background-color: transparent;
+    border-color: #5b6167;
+    padding: 0;
+}
+
+.card,
+.modal-body {
+    background-color: var(--color-light);
+    border-color: #5b6167;
+}
+
+.card-header {
+    background-color: #2b2c30;
+
+}
+
+.modal-header,
+.modal-footer {
+    background-color: #2b2c30;
+    border-top: none;
+    border-bottom: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#customerHome p {
+    color: var(--text-color-light);
+}
+
+
+
+
+
+
+
+/* the Browse Foods page showing all the foods */
+
+#menu p {
+    /* the words at the top of the page */
+    text-align: center;
+    flex-basis: 60%;
+}
+
+#menu ul {
+    /* the list of foods */
+    padding: 0;
+}
+
+#menu li {
+    /* each individual food listing */
+    list-style-type: none;
+    /* switch off bullet-points */
+    display: flex;
+    flex-direction: row;
+    /* image and text are side-by-side */
+    justify-content: flex-start;
+    /* text aligns left */
+    align-items: center;
+    /* and vertically aligns to center */
+}
+
+#menu img {
+    /* images in food listings */
+    width: 140px;
+    height: 80px;
+    padding: 10px;
+}
+
+#menu a {
+    /* the food names */
+    /* color: var(--color-dark); */
+    color: var(--text-color-light);
+}
+
+form {
+    /* centre the form */
+    display: flex;
+    justify-content: center;
+}
+
+form input {
+    font-size: var(--text-medium);
+}
+
+form input[type$=submit] {
+    /* submit button - note use of attribute selector */
+    background-color: var(--color-medium);
+}
+
+form span.bigScreen {
+    /* on small screens, hide some of the wording */
+    display: none;
+}
+
+.form-control {
+    background: var(--color-light);
+    border: 1px solid #5b6167;
+}
+
+
+
+
+
+/* the page showing details about an individual food */
+
+#detailedMenu-details {
+    /* picture, description and table */
+    display: flex;
+    flex-direction: column;
+}
+
+#detailedMenu-text {
+    padding: 10px;
+}
+
+#detailedMenu img {
+    /* centre the image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#detailedMenu p {
+    /* the "description" text */
+    font-size: var(--text-small);
+    text-align: center;
+}
+
+#detailedMenu table {
+    /* the table of nutritional data */
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    background-color: var(--color-grey);
+    border: solid grey 1px;
+}
+
+#detailedMenu td:first-child {
+    /* the first td in each row of the table */
+    text-decoration: underline;
+    text-align: right;
+}
+
+
+
+/* Responsive Design */
+@media screen {
+
+    /* for small-sized screens */
+    .container {
+        padding: 3%;
+    }
+
+    .row {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .row.btn-primary,
+    .row.btn-info {
+        border-radius: 15px;
+    }
+
+    #checkStatus {
+        font-size: 10px;
+    }
+
+    #addToCart,
+    #goToCart {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (min-width: 375px) {
+    /* for phone sized screens */
+
+
+
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    /* for tablet-sized screens */
+    .container {
+        padding: 3%;
+    }
+
+    #menu ul {
+        /* flow food list into two columns */
+        column-count: 2;
+    }
+
+    #detailedMenu-details {
+        flex-direction: row;
+        /* now picture and text are side-by-side */
+    }
+
+    #detailedMenu-picture,
+    #detailedMenu-text {
+        /* divide the sceren into two halves */
+        flex-basis: 50%;
+    }
+
+    #detailedMenu button.button {
+        height: auto;
+        width: 70px;
+    }
+
+    #checkStatus {
+        font-size: 15px;
+    }
+
+    #addToCart,
+    #goToCart {
+        font-size: 20px;
+    }
+
+
+}
+
+@media screen and (min-width: 1920px) {
+
+    /* for big screens */
+    .container {
+        padding: 3%;
+    }
+
+    #menu ul {
+        /* flow food list into three columns */
+        column-count: 3;
+    }
+
+    #checkout div.spacing {
+        float: right;
+        /* padding-left: 25px; */
+    }
+
+    #detailedMenu button.button {
+        height: auto;
+        width: 100px;
+    }
+
+    #checkStatus {
+        font-size: 15px;
+    }
+
+    #addToCart,
+    #goToCart {
+        font-size: 20px;
+    }
+
+
+}
+
+@media screen and (min-width: 1600px) {
+
+    /* for very big screens */
+    .container {
+        padding: 3%;
+    }
+
+    #menu ul {
+        /* flow food list into four columns */
+        column-count: 4;
+    }
+
+    #checkStatus {
+        font-size: 15px;
+    }
+
+    #addToCart,
+    #goToCart {
+        font-size: 20px;
+    }
+
+
+
+}
+
+hr {
+    border-top: 1px solid var(--text-color-light);
+}
+
+/* button styling */
+.btn-primary,
+.btn-info {
+    background-color: var(--color-main-green);
+    border: none;
+    border-radius: 25px;
+}
+
+.btn-primary:hover,
+.btn-info:hover {
+    background-color: var(--color-dark-green);
+}
+
+/* heading styling */
+h1 {
+    color: var(--color-main-green);
+    font-weight: bold;
+    font-size: 36px;
+    margin-top: 2%;
+    text-align: center;
+}
+
+/* hyperlinks */
+a {
+    /* color: var(--color-dark); */
+    color: var(--text-color-light);
+
+}
+
+a:hover {
+    color: var(--color-main-green);
+    text-decoration: none;
+    transition-duration: 0.6s;
+}
+
+.green-link {
+    color: var(--color-main-green);
+}
+
+.green-link:hover {
+    color: var(--color-dark-green);
+}
+
+/* non-bootstrap buttons */
+#addToCart,
+#goToCart {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+
+/* checkout page */
+
+p.vendorStatus {
+    font-weight: bold;
+    font-size: 25px
+}
+
+img.item {
+    height: auto;
+    width: 300px;
+}
+
+div.image {
+    padding-left: 50px;
+}
+
+div.info {
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+input.qty {
+    width: 150px;
+    white-space: nowrap;
+}
+
+button.qty {
+    width: 150px;
+    white-space: nowrap;
+}
+
+center.header {
+    padding-bottom: 20px;
+    margin: auto;
+}
+
+p.footer {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+#checkout center.table {
+    padding-left: 200px;
+    padding-right: 50px;
+}
+
+div.bold {
+    font-weight: bold;
+}
+
+#price-right {
+    margin-left: 70%;
+}
+
+
+#map {
+    margin-bottom: 7%;
+}
+
+/* profile page */
+td#profile-first-name,
+td#profile-last-name {
+    border-bottom: 0.7px solid;
+}
+
+#password-update-text {
+    padding: 2.5%;
+    font-size: 16px;
+}
+
+#save-pw-button {
+    /* margin-top: 11.5%; */
+    width: 30%;
+}
+
+#update_pass_error {
+    color: #ff0000;
+    font-size: 16px;
+}
+
+#update_pass_success {
+    color: var(--color-medium);
+    font-size: 16px;
+}
+
+button.close {
+    color: #fff;
+}
+
+/* login pages */
+#email {
+    background-color: #222426;
+}
+
+#password {
+    background-color: #222426;
+}
+
+#currentLocation {
+    background-color: #222426;
+}
+
+#octicon-green-dot {
+    color: #28a745;
+}
+
+#octicon-muted-dot {
+    color: #f7f7f7;
+}
+
+svg {
+    fill: currentColor
+}
+
+/* vendor current order list */
+#discounted-order {
+    background-color: #eae340;
+}
+
+#preparing-order {
+    background-color: #dff69d;
+}
+
+#ready-order {
+    background-color: #9ff69d;
+}
+
+/* vendor past order list */
+#discounted-order-past {
+    background-color: #dff69d;
+}
+
+
+/* orders */
+#cancel-order {
+    margin-left: 3%;
+    margin-top: 4%;
+}
+
+.btn.btn-primary[disabled] {
+    background-color: #9db99d;
+}
+
+#edit-order {
+    margin-top: 4%;
+}
+
+#order-back {
+    margin-left: 3%;
+}
+
+#edit-button {
+    font-size: 15px;
+}
+
+#update-order-confirm {
+    margin-right: 8%;
+}

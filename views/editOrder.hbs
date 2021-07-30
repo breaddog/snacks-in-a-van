@@ -1,0 +1,98 @@
+<style>
+    p.header {
+        font-weight: bold;
+    }
+
+    p.less {
+        font-weight: 600;
+    }
+</style>
+<div class="container">
+
+    {{!-- VENDORNAME HEAD --}}
+    <div class="row">
+        <div class="col">
+            <h1>Editing Order #{{detailedOrder.orderID}} </h1><br>
+        </div>
+    </div>
+
+    <div class="order-details">
+        <div class="row">
+            <div class="col">
+                <p class="header">                
+                    Picking up at: {{detailedOrder.vendorName}}<br>
+                    <p id="timeOrdered">
+                    Ordered at: {{detailedOrder.timeOrdered}}
+                    </p>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <br><br>
+    {{#each menu}}
+        <div class="row align-items-center d-flex">
+
+            <div class="col checkout-image">
+                <img class="item img-thumbnail" id="checkout-item" src="{{this.image}}" alt="Cart Item Image">
+            </div>
+
+            <div class="col">
+
+                {{!-- one table --}}
+                <div class="row info d-flex bold" id="info-checkout">
+                    <div class="col info">
+                        <div class="name" id="name{{this.snackID}}">Item Name: <a id="nameValue{{this.snackID}}"
+                                href="/customer/menu/{{this.snackID}}">{{this.name}}</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row info d-flex">
+                    <div class="col info">
+                        <div class="name" id="price{{this.snackID}}">Item Price: ${{this.price}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col spacing" id="checkout-spacing">
+
+                <div class="row">
+                    <div class="col info bold">
+                        Enter New Quantity
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col info">
+                        <input class="checkout-update-qty" type="number" min="0" id="change{{this.snackID}}"
+                        value=0>
+                    </div>
+                </div>
+                <br>
+                </div>
+            </div>
+            <br><br>
+       
+    {{/each}}
+                    
+
+    <!-- Prices of order-->
+    <br><br>
+    <div class="row">
+        <div class="col" align="right">
+            <input type="submit" class="btn btn-primary" value="Confirm updated order" onclick="updateOrder()"> {{!-- confirm order (post request) and alert showing old & new price--}}
+        </div>
+    </div>
+
+   
+    
+    <br><br>
+    <a href="/customer/{{detailedOrder.customerID}}/orders/{{detailedOrder.orderID}}" class="btn btn-primary" id="order-back">< Back</a>
+    <br><br>
+
+
+<script src="/js/orders.js"></script>

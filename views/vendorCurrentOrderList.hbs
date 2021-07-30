@@ -1,0 +1,89 @@
+<head>
+    <meta http-equiv="refresh" content="120">
+</head>
+<div class="container">
+    <div class="row bg-success text-white">
+        <div class="col-10">
+            <h2>
+                Order List
+            </h2>
+        </div>
+        <div class="col-2">
+            {{!-- current time placeholder --}}
+            <h3 class="clock" style="text-align: center;">
+
+            </h3>
+        </div>
+    </div>
+    <div class="row bg-success text-white mb-4">
+        <div class="col-2">
+            <h4 style="text-align: center; white-space: nowrap">
+                Order No
+            </h4>
+        </div>
+        <div class="col-2">
+            <h4 style="text-align: center; white-space: nowrap">
+                Name
+            </h4>
+        </div>
+        <div class="col-4">
+            <h4 style="text-align: center; white-space: nowrap">
+                Time Ordered
+            </h4>
+        </div>
+        <div class="col-2">
+            <h4 style="text-align: center; white-space: nowrap">
+                Time Left
+            </h4>
+        </div>
+        <div class="col-2">
+            <h4 style="text-align: center; white-space: nowrap">
+                Status
+            </h4>
+        </div>
+    </div>
+
+    {{#each outstandingOrders}}
+    <a href="/vendor/{{this.vendorID}}/{{this.orderID}}">
+        {{#if this.isDelayed}}
+        <div class="row text-dark mt-3" id="discounted-order">
+            {{else if this.isOngoing}}
+            <div class="row text-dark mt-3" id="preparing-order">
+                {{else if this.isReady}}
+                <div class="row text-dark mt-3" id="ready-order">
+                    {{/if}}
+
+                    <div class="col-2">
+                        <h4 style="text-align: center;">
+                            {{this.orderID}}
+                        </h4>
+                    </div>
+                    <div class="col-2">
+                        <h4 style="text-align: center;">
+                            {{this.customerName}}
+                        </h4>
+                    </div>
+                    <div class="col-4">
+                        <h4 style="text-align: center;">
+                            <div class="timeOrdered" style="white-space: nowrap">
+                                {{this.timeOrdered}}
+                            </div>
+                        </h4>
+                    </div>
+                    <div class="col-2">
+                        <h4 style="text-align: center;">
+                            <div class="timer" style="white-space: nowrap"></div>
+                        </h4>
+                    </div>
+                    <div class="col-2">
+                        <h4 style="text-align: center;">
+                            {{this.status}}
+                        </h4>
+                    </div>
+
+                </div>
+    </a>
+    {{/each}}
+</div>
+<script src="/js/clock.js"></script>
+<script src="/js/countdownVendorOrderList.js"></script>

@@ -1,0 +1,99 @@
+{{!-- ONGOING ORDERS --}}
+<div class="container">
+    <div class="row">
+        <h1>Current Orders</h1>
+    </div>
+
+    {{#each outstandingOrders}}
+    <div class="row">
+        <div class="col-4">
+            {{!-- Order number --}}
+            <h2>
+                Order #{{this.orderID}}
+            </h2>
+            {{!-- image of truck? --}}
+            <img src="{{this.vendor.image}}" class="rounded img-thumbnail border-dark">
+            <br><b>Picking up at: </b> <br>{{this.pickupLocation}}</br></p>
+        </div>
+        <div class="col-4 my-auto">
+            {{!-- van name --}}
+            <div class = "row">
+                <h3>{{this.vendor.vanName}}</h3>
+            </div>
+            <div class = "row">
+                {{!-- qty: total price --}}
+                {{this.orderList.length}} item(s) : ${{this.priceTotal}}</p>
+            </div>
+            <div class="row">
+                <div class="timeOrdered">
+                    {{this.timeOrdered}}
+                </div>
+            </div>
+        </div>
+        <div class="col-4 my-auto">
+            <div class = "row">
+                <b>Editable within :</b>
+            </div>
+            <div class = "row">
+                {{!-- timer --}}
+                <div class="timer"></div>
+                <br><br>
+            </div>
+            <div class = "row">
+                {{!-- button to check order details --}}
+                <a name="checkStatus" id="checkStatus" class="btn btn-primary" href="/customer/{{this.customerID}}/orders/{{this.orderID}}"
+                role="button">CHECK STATUS</a>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    {{/each}}
+</div>
+<div class="container">
+    <div class="row">
+        {{!-- Past Orders --}}
+        <h1>Past Orders</h1>
+    </div>
+
+
+    {{#each pastOrders}}
+    <div class="row">
+        <div class="col">
+            {{!-- Order number --}}
+            <h2>Order #{{this.orderID}}</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            {{!-- image of truck? --}}
+            <img src="{{this.vendor.image}}" class="img-thumbnail">
+        </div>
+        <div class="col-4 my-auto">
+            <div class = "row">
+                {{!-- van name --}}
+                <h3>{{this.vendor.vanName}}</h3>
+            </div>
+            <div class = "row">
+                {{!-- qty: total price --}}
+                {{this.orderList.length}} items : ${{this.priceTotal}}
+            </div>
+        </div>
+
+        <div class="col-4 my-auto">
+            <div class = "row">
+                {{!-- time order was made --}}
+                {{this.timeOrdered}}
+            </div>
+        </div>
+    </div>
+    <br><br>
+    {{/each}}
+</div>
+
+<script src="/js/countdownOrderList.js"></script>

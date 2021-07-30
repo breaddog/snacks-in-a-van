@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row bg-success text-white">
+        <div class="col-10">
+            <h2>
+                Picked Up Orders
+            </h2>
+        </div>
+        <div class="col-2">
+            {{!-- current time placeholder --}}
+            <h3 class="clock" style="text-align: center;">
+
+            </h3>
+        </div>
+    </div>
+    <div class="row bg-success text-white mb-4">
+        <div class="col-2">
+            <h4 style="text-align: center;">
+                Order No
+            </h4>
+        </div>
+        <div class="col-2">
+            <h4 style="text-align: center;">
+                Name
+            </h4>
+        </div>
+        <div class="col-4">
+            <h4 style="text-align: center;">
+                Date
+            </h4>
+        </div>
+        <div class="col-2">
+            <h4 style="text-align: center;">
+                Picked Up
+            </h4>
+        </div>
+        <div class="col-2">
+            <h4 style="text-align: center;">
+                Status
+            </h4>
+        </div>
+    </div>
+
+    {{#each pastOrders}}
+    <a href="/vendor/{{this.vendorID}}/{{this.orderID}}">
+        {{#if this.discount}}
+        <div class="row text-dark mt-3" id="discounted-order-past">
+            {{else}}
+            <div class="row text-dark mt-3" id="ready-order">
+                {{/if}}
+
+                <div class="col-2">
+                    <h4 style="text-align: center;">
+                        {{this.orderID}}
+                    </h4>
+                </div>
+                <div class="col-2">
+                    <h4 style="text-align: center;">
+                        {{this.customerName}}
+                    </h4>
+                </div>
+                <div class="col-4">
+                    <h4 style="text-align: center;">
+                        {{this.timeOrdered}}
+                    </h4>
+                </div>
+                <div class="col-2">
+                    <h4 style="text-align: center;">
+                        {{this.hoursPickedUp}}:{{this.minutesPickedUp}}
+
+                    </h4>
+                </div>
+                <div class="col-2">
+                    <h4 style="text-align: center;">
+                        {{#if this.discount}}
+                        Discounted
+                        {{else}}
+                        Full Price
+                        {{/if}}
+                    </h4>
+                </div>
+
+            </div>
+    </a>
+    {{/each}}
+</div>
+<script src="/js/clock.js"></script>

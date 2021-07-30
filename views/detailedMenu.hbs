@@ -1,0 +1,48 @@
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col">
+            <img class="rounded img-thumbnail border-dark" src="{{oneSnack.image}}">
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>{{oneSnack.name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" align="center">
+            ${{oneSnack.price}}
+        </div>
+    </div>
+
+
+    <p></p>
+
+    <div class="row d-flex">
+        <div class="col" align="center">
+            <input class="button mb-2" type="number" min="1" max="20" name="value" id="value" value="1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" align="right">
+            <button class="btn btn-primary" type="button" name="addToCart"
+                onclick="updateCart({{oneSnack.snackID}}, document.getElementById('value').value, {{oneSnack.price}}, '{{oneSnack.name}}')">
+                Add To Cart
+            </button>
+        </div>
+        <div class="col" align="left">
+            <button class="btn btn-primary" type="button" onclick=" viewCart() ">View Cart</button>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col" align="center">
+            <a href="/customer/menu" class="btn btn-primary button">Back</a>
+        </div>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,70 @@
+<div class = "container">
+    <br><br>
+    <div class = "row">
+         <h1>Hello {{oneCustomer.firstName}}</h1>
+    </div>
+   
+    <div class = "row">
+        <table id = "profile-table">
+            <tr><td>First Name:&nbsp;&#9998;</td><td id="profile-first-name" contentEditable="true" data-name="firstName" data-toggle="tooltip" data-placement="top" title="Edit name directly and press Enter">{{oneCustomer.firstName}} </td></tr>
+            <tr><td>Last Name: &#9998;</td><td id="profile-last-name" contentEditable="true" data-name="lastName" data-toggle="tooltip" data-placement="top" title="Edit name directly and press Enter">{{oneCustomer.lastName}}</td></tr>
+            <tr><td>Email: </td><td>{{oneCustomer.email}}</td></tr>
+        </table>
+        
+    </div>
+    <br><br>
+    <div class ="row">
+    <!-- Update password -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update-password">
+    Update password
+    </button>
+
+        <div class="modal fade" id="update-password" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><b>Update password</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p id = "password-update-text">
+                Please enter your current password and your new password. Your new password must not be identical 
+                to your old password. Once updated, you will be logged out so you can login again.
+            </p>
+            <form action= "{{oneCustomer.customerID}}/updatePassword" id="update-pwd-form" method="POST">
+                <div class="col-md-4 col-md-12">
+                    <div class="form-group">
+                        <label for="old">Enter Old Password: <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" name="old_pw" id="old_password" placeholder="Old Password">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="new">Enter New Password: <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" name="new_pw" id="new_password" placeholder="New Password">
+                    </div>
+                    <div id="update_pass_error"></div>
+                    <div id="update_pass_success"></div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <!-- save changes and update password -->
+            <input type="submit" value="Save Changes" onclick="updateNewPassword()" id="save-pw-button" class="btn btn-info btn-block">
+        </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class = "row">
+        <a href="/customer/logout" class="btn btn-primary">Logout</a>
+    </div>
+
+</div>
+
+<script src="/js/profile.js"></script>
+<script src="/js/password.js"></script>

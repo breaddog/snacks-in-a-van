@@ -1,0 +1,41 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+</head>
+<style>
+    #map{
+        height: 400px
+    }
+</style>
+<div class="container" >
+    {{!-- SNACKS IN A VAN BABY! --}}
+    <div class="col justify-content-center ">
+        <center>
+            <h1 id="website-title">SNACKS IN A VAN</h1>
+            <h2 id="welcomeText" style="font-size:25px">Please allow location access to enhance your ordering experience!</h2>
+            <h4 id="loading"></h3>
+            {{!-- <button class="btn btn-primary justify-content-center">No Worries, Let me continue!</button> --}}
+        </center>
+    </div>
+    <br><br>
+    {{!-- MAP --}}
+    <div class="row">
+        <div class="col"> 
+            <div id="map"></div>
+        </div>
+    </div>
+
+
+    {{!-- LIST OF VENDORS --}}
+    <center id="vendorList">
+
+    </center>
+</div>
+
+<script src="/js/map.js"></script>
+

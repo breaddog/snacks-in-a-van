@@ -1,0 +1,44 @@
+<header>
+    {{Navbar}}
+</header>
+
+<main>
+
+    <form method="post" id="registration" action="">
+                <div class="form-group">
+                    <label for="fname">First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" value="{{firstName}}">
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" value="{{lastName}}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Id <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email id" value="{{email}}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password"value="{{password}}">
+                </div>
+                <div class="form-group">
+                    <label for="cpassword">Confirm Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Enter Same as Password" value="{{cpassword}}">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-info btn-block">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-8">
+                            Already a user? Login <a href="/customer/login">here</a>
+                        </div>
+                    </div>
+                </div>
+    </form>
+
+</main>
+
+<footer>
+
+</footer>

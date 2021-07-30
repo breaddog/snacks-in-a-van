@@ -1,0 +1,149 @@
+
+
+<script>
+    // preserve cart on refresh regardless
+    window.onbeforeunload = function () {
+        viewCart()
+    }
+</script>
+{{!-- cart --}}
+<section id="cart">
+    <center class="header">
+        <p>
+        <h1>Checkout</h1>
+        </p>
+
+        <div id ="errorFlash" style="display: inline-block"></div>
+        <br></br>
+    </center>
+    
+
+    {{#if cartIsEmpty}}
+    <center>
+        <p class="empty"> Your cart is empty now, why dont you add some items first?</p>>
+        <a href="menu"> Click here to go to the menu!</a>
+    </center>
+
+    {{else}}
+    <div class="container">
+        <center>
+            {{#if vanSelected}}
+                <p id="vendorChosen" class="vendorStatus" name="vanName">Ordering From: {{vendor.vanName}}</p>
+            {{else}}
+                <p id="vendorUnchosen" class="vendorStatus" style="padding-top: 25px"><a href="/customer/home" alt="Vendor Selection">Please select a van by clicking here before proceeding.</a> </p>
+            {{/if}}
+        </center>
+
+        {{#each cart}}
+        <div class="row align-items-center d-flex">
+
+            <div class="col checkout-image">
+                <img class="item img-thumbnail" id="checkout-item" src="{{this.image}}" alt="Cart Item Image">
+            </div>
+
+            <div class="col">
+
+                {{!-- one table --}}
+                <div class="row info d-flex bold" id="info-checkout">
+                    <div class="col info">
+                        <div class="name" id="name{{this.snackID}}">Item Name: <a id="nameValue{{this.snackID}}"
+                                href="/customer/menu/{{this.snackID}}">{{this.name}}</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row info d-flex">
+                    <div class="col info">
+                        <div class="name" id="price{{this.snackID}}">Item Price: ${{this.price}}</div>
+                    </div>
+                </div>
+
+                <div class="row info d-flex">
+                    <div class="col info">
+                        <div class="name" id="quantity{{this.snackID}}">Quantity: x{{this.quantity}}</div>
+                    </div>
+
+                </div>
+
+                <div class="row info d-flex">
+                    <div class="col info">
+                        <div class="name" id="subTotal{{this.snackID}}">Sub Total: ${{this.subtotal}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col spacing" id="checkout-spacing">
+
+                <div class="row">
+                    <div class="col info bold">
+                        Change Quantity
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col info">
+                        <input class="checkout-qty" type="number" min="0" id="change{{this.snackID}}"
+                            placeholder="{{this.quantity}}">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col info">
+                        <input type="button" class="btn btn-primary checkout-btn-qty" value="Edit Quantity"
+                            onclick="updateCartForItem({{this.snackID}})">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <p></p>
+        {{/each}}
+
+        <p class="footer bold" style="padding-top: 50px;" id="total">Total Price: ${{total}}</p>
+        {{#if vanSelected}}
+        <p class="footer bold" id="pickupLocation">Pickup Location: {{vendor.address}}</p>
+        {{/if}}
+
+
+
+
+
+
+        {{#if authenticated}}
+        <div class="row">
+            <div class="col" align="center">
+                <button type="button" onclick="confirmRequest()" class="btn btn-primary">Confirm my Order</button>
+            </div>
+        </div>
+
+
+        {{else}}
+        <div class="row">
+            <div class="col" align="center">
+                <p id="forceLogin">Please <a class="green-link" href="/customer/signup">signup</a> or <a class="green-link" href="/customer/login">login</a> to checkout
+                    your order!</p>
+            </div>
+        </div>
+        {{/if}}
+
+        <br>
+        <div class="row">
+            <div class="col" align="center">
+                <button type="button" onclick="clearCart()" class="btn btn-primary">Clear
+                    Cart</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    {{/if}}
+
+
+<script src="/js/checkout.js"></script>
+</section>

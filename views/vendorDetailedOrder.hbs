@@ -1,0 +1,106 @@
+<div class="container">
+    {{!-- top --}}
+    <div class="row">
+        <div class="col">
+            {{!-- back button --}}
+            {{#if detailedOrder.isCompleted}}
+            <a href="/vendor/{{detailedOrder.vendorID}}/past-orders">
+                {{else}}
+                <a href="/vendor/{{detailedOrder.vendorID}}/outstanding-orders">
+                    {{/if}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                        class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                </a>
+        </div>
+        <div class="col justify-content-center">
+            {{!-- ORDER NUMBER, TICKETLOGO --}}
+            <h1>
+                Order #{{detailedOrder.orderID}}
+            </h1>
+        </div>
+
+        <div class="col">
+            {{!-- TIMER COUNTDOWN --}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3 style="text-align: center;">
+                {{!-- name --}}
+                {{detailedOrder.customerName}}
+            </h3>
+
+            <h3 id="timeOrdered" style="text-align: center;">
+                {{!-- date --}}
+                {{detailedOrder.timeOrdered}}
+            </h3>
+
+            <h3 style="text-align: center;">
+                {{!-- status--}}
+                <div id="status">{{detailedOrder.status}}</div>
+            </h3>
+
+            <h3 style="text-align: center;">
+                {{!-- status--}}
+                <div id="timer"></div>
+            </h3>
+
+
+        </div>
+    </div>
+
+    {{!-- main body --}}
+    <div class="row">
+        <div class="col">
+            {{!-- Items heading --}}
+            <h3>
+                Items
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        {{#each detailedOrder.orderList}}
+
+        <div class="col-3 mt-3">
+            {{!-- image --}}
+            <a href="/customer/menu/{{this.snackID}}">
+                <img src="{{this.image}}" class="img-thumbnail">
+            </a>
+        </div>
+        <div class="col-3 mt-3">
+            {{!-- snack name --}}
+            <h4>
+                {{this.name}}
+                <br>
+                {{!-- qty and price --}}
+                <small class="text-muted">x{{this.quantity}} : ${{this.price}}</small>
+            </h4>
+
+        </div>
+
+        {{/each}}
+    </div>
+    <br></br>
+    <br></br>
+    {{#if detailedOrder.isReady}}
+    {{!-- PICKUP BUTTON --}}
+    <form action="/vendor/{{detailedOrder.vendorID}}/{{detailedOrder.orderID}}/complete" method="post">
+        <input type="hidden" name="orderID" value="{{detailedOrder.orderID}}" />
+        <input class="btn btn-primary" type="submit" value="PICK-UP" />
+    </form>
+    {{else if detailedOrder.isCompleted}}
+    {{else}}
+    {{!-- READY BUTTON --}}
+    <form action="/vendor/{{detailedOrder.vendorID}}/{{detailedOrder.orderID}}/fulfill" method="post">
+        <input type="hidden" name="orderID" value="{{detailedOrder.orderID}}" />
+        <input class="btn btn-primary" type="submit" value="READY" />
+    </form>
+    {{/if}}
+
+</div>
+
+<script src="/js/countdownVendorDetailed.js"></script>
